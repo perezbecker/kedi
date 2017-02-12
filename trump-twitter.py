@@ -5,7 +5,7 @@ api = twitter.Api(consumer_key=auth.consumer_key, consumer_secret=auth.consumer_
 
 # print api.VerifyCredentials()
 
-t = api.GetUserTimeline('realDonaldTrump', count=5)
+t = api.GetUserTimeline('realdonaldtrump', count=5)
 
 tweets = [i.AsDict() for i in t]
 
