@@ -22,5 +22,5 @@ write_string(sum_tweet)
 while True:
     scroll()
     show()
-    time.sleep(0.01)
+    #time.sleep(0.01)
     # print t['text']
