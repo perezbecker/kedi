@@ -7,14 +7,17 @@ api = twitter.Api(consumer_key=auth.consumer_key, consumer_secret=auth.consumer_
 
 # print api.VerifyCredentials()
 
-t = api.GetUserTimeline(screen_name='@realDonaldTrump', count=1)
+t = api.GetUserTimeline(screen_name='@realDonaldTrump', count=10)
 
 tweets = [i.AsDict() for i in t]
 
-clear()
-for t in tweets:
-    write_string(t['text'])
+sum_tweet=''
 
+for t in tweets:
+    sum_tweet=sum_tweet+' - - - '+t['text']
+
+clear()
+write_string(sum_tweet)
 
 while True:
     scroll()
