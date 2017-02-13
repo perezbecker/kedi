@@ -12,7 +12,8 @@ t = api.GetUserTimeline(screen_name='@realDonaldTrump', count=1)
 tweets = [i.AsDict() for i in t]
 
 clear()
-write_string(t[0]['text'])
+for t in tweets:
+    write_string(t['text'])
 
 
 while True:
