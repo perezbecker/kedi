@@ -19,10 +19,12 @@ for t in tweets:
 clear()
 write_string(sum_tweet)
 
-timeout = time.time() + 60*4
+timeout = time.time() + 60*4 #Timeout every four minutes
 
 while True:
     scroll()
     show()
+    if time.time() > timeout:
+        break
     #time.sleep(0.01)
     # print t['text']
