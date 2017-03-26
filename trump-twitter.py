@@ -16,6 +16,8 @@ sum_tweet=''
 for t in tweets:
     sum_tweet=sum_tweet+' - - - '+t['text']
 
+sum_tweet=sum_tweet.encode(errors='ignore').decode('utf-8'))
+
 clear()
 write_string(sum_tweet)
 
