@@ -2,6 +2,7 @@
 
 import time
 from predict import predict
+from microdotphat import write_string, scroll, clear, show
 
 # List of bus lines/stops to predict.  Use routefinder.py to look up
 # lines/stops for your location, copy & paste results here.  The 4th
@@ -30,7 +31,10 @@ while True:
 				# current time and time of last query,
 				# display in whole minutes.
 				t = p - (currentTime - pl.lastQueryTime)
-				print '\t' + str(int(t/60)) + ' minutes'
+				Output='Bus: '+str(int(t/60))
+                clear()
+                write_string(Output)
+                show()
 		else:
 			print '\tNo predictions'
 	prevTime = currentTime;
