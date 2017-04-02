@@ -20,26 +20,31 @@ for s in stops:
 
 time.sleep(4) # Allow a moment for initial results
 
-while True:
-	currentTime = time.time()
-	#print
-	for pl in predictList:
-		#print pl.data[1] + ' ' + pl.data[3] + ':'
-		if pl.predictions: # List of arrival times, in seconds
-			for p in pl.predictions:
-				# Extrapolate from predicted arrival time,
-				# current time and time of last query,
-				# display in whole minutes.
-				t = p - (currentTime - pl.lastQueryTime)
-				Output='Bus:'+str(int(t/60))
-                print Output
-                Output.encode(errors='ignore').decode('utf-8')
-                clear()
-                write_string(Output)
-                scroll()
-                show()
 
-		# else:
-		# 	print '\tNo predictions'
-	prevTime = currentTime;
-	time.sleep(5) # Refresh every ~5 seconds
+currentTime = time.time()
+#print
+for pl in predictList:
+	#print pl.data[1] + ' ' + pl.data[3] + ':'
+	if pl.predictions: # List of arrival times, in seconds
+		for p in pl.predictions:
+			# Extrapolate from predicted arrival time,
+			# current time and time of last query,
+			# display in whole minutes.
+			t = p - (currentTime - pl.lastQueryTime)
+			Output='Bus:'+str(int(t/60))
+            print Output
+            Output.encode(errors='ignore').decode('utf-8')
+
+
+	# else:
+	# 	print '\tNo predictions'
+prevTime = currentTime;
+time.sleep(5) # Refresh every ~5 seconds
+
+
+clear()
+write_string(Output)
+
+while True:
+    scroll()
+    show()
