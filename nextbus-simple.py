@@ -35,6 +35,7 @@ while True:
                 clear()
                 write_string(Output)
                 show()
+
 		else:
 			print '\tNo predictions'
 	prevTime = currentTime;
