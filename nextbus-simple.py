@@ -18,7 +18,7 @@ predictList = []
 for s in stops:
 	predictList.append(predict(s))
 
-time.sleep(1) # Allow a moment for initial results
+time.sleep(4) # Allow a moment for initial results
 
 while True:
 	currentTime = time.time()
