@@ -33,9 +33,10 @@ while True:
 				t = p - (currentTime - pl.lastQueryTime)
 				Output='Bus: '+str(int(t/60))
                 print Output
-                # clear()
-                # write_string(Output)
-                # show()
+                Output.encode(errors='ignore').decode('utf-8')
+                clear()
+                write_string(Output)
+                show()
 
 		# else:
 		# 	print '\tNo predictions'
