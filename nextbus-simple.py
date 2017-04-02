@@ -36,6 +36,7 @@ while True:
                 Output.encode(errors='ignore').decode('utf-8')
                 clear()
                 write_string(Output)
+                scroll()
                 show()
 
 		# else:
