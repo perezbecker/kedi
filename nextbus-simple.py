@@ -36,7 +36,7 @@ while True:
                 write_string(Output)
                 show()
 
-		else:
-			print '\tNo predictions'
+		# else:
+		# 	print '\tNo predictions'
 	prevTime = currentTime;
 	time.sleep(5) # Refresh every ~5 seconds
