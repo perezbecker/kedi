@@ -31,7 +31,7 @@ while True:
 				# current time and time of last query,
 				# display in whole minutes.
 				t = p - (currentTime - pl.lastQueryTime)
-				Output='Bus: '+str(int(t/60))
+				Output='Bus:'+str(int(t/60))
                 print Output
                 Output.encode(errors='ignore').decode('utf-8')
                 clear()
