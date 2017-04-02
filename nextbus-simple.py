@@ -32,6 +32,7 @@ while True:
 				# display in whole minutes.
 				t = p - (currentTime - pl.lastQueryTime)
 				Output='Bus: '+str(int(t/60))
+                print Output
                 clear()
                 write_string(Output)
                 show()
