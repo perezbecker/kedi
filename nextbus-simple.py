@@ -32,14 +32,15 @@ for pl in predictList:
 			# display in whole minutes.
 			t = p - (currentTime - pl.lastQueryTime)
 			Output='Bus:'+str(int(t/60))
-            print Output
             Output.encode(errors='ignore').decode('utf-8')
 
 
-	# else:
-	# 	print '\tNo predictions'
+	else:
+        Output='No Bus'
+        Output.encode(errors='ignore').decode('utf-8')
+
 prevTime = currentTime;
-time.sleep(5) # Refresh every ~5 seconds
+#time.sleep(5) # Refresh every ~5 seconds
 
 
 clear()
