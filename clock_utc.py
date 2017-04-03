@@ -4,7 +4,7 @@ from microdotphat import write_string, set_decimal, clear, show
 
 while True:
     clear()
-    t = datetime.datetime.now(tzinfo="US/Eastern")
+    t = datetime.datetime.now()
     if t.second % 2 == 0:
         set_decimal(2, 1)
         set_decimal(4, 1)
