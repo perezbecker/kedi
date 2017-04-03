@@ -4,7 +4,7 @@ import math
 import time
 import datetime
 
-from microdotphat import clear, set_brightness, show, write_string, WIDTH, HEIGHT
+from microdotphat import clear, set_brightness, set_decimal, show, write_string, WIDTH, HEIGHT
 
 
 
