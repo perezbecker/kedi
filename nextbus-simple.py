@@ -2,7 +2,7 @@
 
 import time
 from predict import predict
-# from microdotphat import write_string, scroll, clear, show
+from microdotphat import write_string, scroll, clear, show
 
 # List of bus lines/stops to predict.  Use routefinder.py to look up
 # lines/stops for your location, copy & paste results here.  The 4th
