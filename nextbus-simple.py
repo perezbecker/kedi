@@ -16,7 +16,7 @@ stops = [
 # arrival times from each object's predictions[] list (see code later).
 predictList = []
 for s in stops:
-	predictList.append(predict(s))
+    predictList.append(predict(s))
 
 time.sleep(4) # Allow a moment for initial results
 
@@ -24,17 +24,17 @@ time.sleep(4) # Allow a moment for initial results
 currentTime = time.time()
 #print
 for pl in predictList:
-	#print pl.data[1] + ' ' + pl.data[3] + ':'
-	if pl.predictions: # List of arrival times, in seconds
-		for p in pl.predictions:
-			# Extrapolate from predicted arrival time,
-			# current time and time of last query,
-			# display in whole minutes.
-			t = p - (currentTime - pl.lastQueryTime)
-			Output='Bus:'+str(int(t/60))
+    #print pl.data[1] + ' ' + pl.data[3] + ':'
+    if pl.predictions: # List of arrival times, in seconds
+        for p in pl.predictions:
+            # Extrapolate from predicted arrival time,
+            # current time and time of last query,
+            # display in whole minutes.
+            t = p - (currentTime - pl.lastQueryTime)
+            Output='Bus:'+str(int(t/60))
             #Output.encode(errors='ignore').decode('utf-8')
 
-    else:
+        else:
         Output='No Bus'
         #Output.encode(errors='ignore').decode('utf-8')
 
