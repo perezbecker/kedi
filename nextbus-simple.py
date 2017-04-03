@@ -2,7 +2,7 @@
 
 import time
 from predict import predict
-from microdotphat import write_string, scroll, clear, show
+# from microdotphat import write_string, scroll, clear, show
 
 # List of bus lines/stops to predict.  Use routefinder.py to look up
 # lines/stops for your location, copy & paste results here.  The 4th
@@ -34,15 +34,15 @@ for pl in predictList:
             Output='Bus:'+str(int(t/60))
             #Output.encode(errors='ignore').decode('utf-8')
 
-        else:
-            Output='No Bus'
-            #Output.encode(errors='ignore').decode('utf-8')
+    else:
+        Output='No Bus'
+        #Output.encode(errors='ignore').decode('utf-8')
 
 prevTime = currentTime;
 #time.sleep(5) # Refresh every ~5 seconds
 
 
-while True:
-    clear()
-    write_string(Output, kerning=False)
-    show()
+# while True:
+#     clear()
+#     write_string(Output, kerning=False)
+#     show()
