@@ -33,8 +33,6 @@ for pl in predictList:
 			t = p - (currentTime - pl.lastQueryTime)
 			Output='Bus:'+str(int(t/60))
             Output.encode(errors='ignore').decode('utf-8')
-
-
 	else:
         Output='No Bus'
         Output.encode(errors='ignore').decode('utf-8')
