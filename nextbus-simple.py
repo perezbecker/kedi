@@ -42,7 +42,7 @@ prevTime = currentTime;
 #time.sleep(5) # Refresh every ~5 seconds
 
 
-# while True:
-#     clear()
-#     write_string(Output, kerning=False)
-#     show()
+while True:
+    clear()
+    write_string(Output, kerning=False)
+    show()
