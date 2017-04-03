@@ -8,7 +8,7 @@ from microdotphat import clear, set_brightness, set_decimal, show, write_string,
 
 
 
-speed = 5
+speed = 6
 
 
 string = 0
