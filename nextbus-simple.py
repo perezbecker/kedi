@@ -46,5 +46,4 @@ clear()
 write_string(Output)
 
 while True:
-    scroll()
     show()
