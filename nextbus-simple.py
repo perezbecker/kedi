@@ -26,13 +26,13 @@ currentTime = time.time()
 for pl in predictList:
     #print pl.data[1] + ' ' + pl.data[3] + ':'
     if pl.predictions: # List of arrival times, in seconds
-        for p in pl.predictions:
+        #for p in pl.predictions:
             # Extrapolate from predicted arrival time,
             # current time and time of last query,
             # display in whole minutes.
-            t = p - (currentTime - pl.lastQueryTime)
-            Output='Bus:'+str(int(t/60))
-            #Output.encode(errors='ignore').decode('utf-8')
+        t = pl.predictions[0] - (currentTime - pl.lastQueryTime)
+        Output='Bus:'+str(int(t/60))
+        #Output.encode(errors='ignore').decode('utf-8')
 
     else:
         Output='No Bus'
