@@ -2,17 +2,13 @@
 
 import math
 import time
+import datetime
 
 from microdotphat import clear, set_brightness, show, write_string, WIDTH, HEIGHT
 
 
-print("""Fading Text
-
-Uses the brightness control to fade between messages.
-""")
 
 speed = 5
-
 
 
 string = 0
