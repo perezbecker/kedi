@@ -34,14 +34,7 @@ class getTime:
         while self._running:
             time.sleep(0.05)
             t = datetime.datetime.now()
-            # if t.second % 2 == 0:
-            #     set_decimal(2, 1)
-            #     set_decimal(4, 1)
-            # else:
-            #     set_decimal(2, 0)
-            #     set_decimal(4, 0)
             localtime = t
-            #localtime = t.strftime('%H%M%S')
 
 class getBike:
     def __init__(self):
@@ -128,9 +121,6 @@ class getBus:
               ( 'mbta', '47', '1812', 'Central Square' ), #47 stop Brookline/Putnam, towards Central Square
             ]
 
-            # Populate a list of predict objects from stops[].  Each then handles
-            # its own periodic NextBus server queries.  Can then read or extrapolate
-            # arrival times from each object's predictions[] list (see code later).
             predictList = []
             for s in stops:
                 predictList.append(predict(s))
@@ -143,17 +133,11 @@ class getBus:
             for pl in predictList:
                 #print pl.data[1] + ' ' + pl.data[3] + ':'
                 if pl.predictions: # List of arrival times, in seconds
-                    #for p in pl.predictions:
-                        # Extrapolate from predicted arrival time,
-                        # current time and time of last query,
-                        # display in whole minutes.
                     t = pl.predictions[0] - (currentTime - pl.lastQueryTime)
                     busarrival='Bus:'+str(int(t/60))
-                    #Output.encode(errors='ignore').decode('utf-8')
 
                 else:
                     busarrival='No Bus'
-                    #Output.encode(errors='ignore').decode('utf-8')
 
             prevTime = currentTime;
             time.sleep(20)
