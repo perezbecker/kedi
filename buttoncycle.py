@@ -204,6 +204,7 @@ if __name__ == '__main__':
     buttondata = ButtonClass.ButtonCounter(26)
     ButtonPresses = buttondata.getTicks()
 
+    print "ButtonPresses", ButtonPresses
     Exit = False
 
     while Exit==False:
@@ -221,6 +222,7 @@ if __name__ == '__main__':
             show()
             time.sleep(0.05)
             ButtonPresses = buttondata.getTicks()
+            print "Clock ", ButtonPresses
 
         #1 Bike
         while(ButtonPresses % NumberOfModules == 1):
@@ -229,6 +231,7 @@ if __name__ == '__main__':
             show()
             time.sleep(0.05)
             ButtonPresses = buttondata.getTicks()
+            print "Bike ", ButtonPresses
 
         #2 Weather
         while(ButtonPresses % NumberOfModules == 2):
@@ -241,6 +244,7 @@ if __name__ == '__main__':
                 if time.time() > timeout:
                     break
             ButtonPresses = buttondata.getTicks()
+            print "Weather ", ButtonPresses
 
         #3 Bus
         while(ButtonPresses % NumberOfModules == 3):
@@ -249,6 +253,7 @@ if __name__ == '__main__':
             show()
             time.sleep(0.05)
             ButtonPresses = buttondata.getTicks()
+            print "Bus ", ButtonPresses
 
         #4 Twitter
         while(ButtonPresses % NumberOfModules == 4):
@@ -261,6 +266,7 @@ if __name__ == '__main__':
                 if time.time() > timeout:
                     break
             ButtonPresses = buttondata.getTicks()
+            print "Twitter ", ButtonPresses
 
         #5 OffButton
         while(ButtonPresses % NumberOfModules == 5):
@@ -269,6 +275,7 @@ if __name__ == '__main__':
             show()
             time.sleep(1)
             ButtonPresses = buttondata.getTicks()
+            print "Offbutton ", ButtonPresses
             if(ButtonPresses % NumberOfModules != 5):
                 break
 
