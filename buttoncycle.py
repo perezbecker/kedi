@@ -203,7 +203,7 @@ if __name__ == '__main__':
     NumberOfModules = 6
 
     buttondata = ButtonClass.ButtonCounter(26)
-    ButtonPressNow = buttondata.getTicks()
+    ButtonPresses = buttondata.getTicks()
 
     Exit = False
 
