@@ -11,7 +11,7 @@ from threading import Thread
 
 import twitter
 
-from microdotphat import write_string, scroll, clear, show
+from microdotphat import write_string, scroll, clear, show, set_decimal
 import RPi.GPIO as GPIO
 import ButtonClass
 
