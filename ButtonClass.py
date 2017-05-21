@@ -11,7 +11,7 @@ class ButtonCounter:
     self.inputPin = inputPin
 
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(26, GPIO.IN,, pull_up_down=GPIO.PUD_DOWN)  #HARDCODED INPUTPIN (BUTTON)
+    GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  #HARDCODED INPUTPIN (BUTTON)
     GPIO.add_event_detect(26, GPIO.RISING, callback=self.event_callback)
 
   def getTicks(self):
