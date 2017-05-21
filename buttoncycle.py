@@ -193,7 +193,6 @@ if __name__ == '__main__':
 
 
 
-    localtime='0'
     bikestatus='C-sync'
     weatherreport='W-sync'
     busarrival='B-sync'
