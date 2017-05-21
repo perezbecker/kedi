@@ -3,8 +3,8 @@ import time
 import json
 import requests
 import os
-
 import auth as au
+
 from predict import predict
 from urllib2 import Request, urlopen, URLError
 from threading import Thread
@@ -84,6 +84,7 @@ class getWeather:
 
     def run(self):
         global weatherreport
+
         while self._running:
             secret = au.DarkSkySecret
             lat = str(au.lat)
@@ -116,6 +117,7 @@ class getBus:
 
     def run(self):
         global busarrival
+
         while self._running:
             stops = [
               ( 'mbta', '47', '1812', 'Central Square' ), #47 stop Brookline/Putnam, towards Central Square
@@ -151,9 +153,10 @@ class getTwitter:
 
     def run(self):
         global twittermessages
+
         while self._running:
 
-            api = twitter.Api(consumer_key=auth.consumer_key, consumer_secret=auth.consumer_secret, access_token_key=auth.access_token_key, access_token_secret=auth.access_token_secret)
+            api = twitter.Api(consumer_key=au.consumer_key, consumer_secret=au.consumer_secret, access_token_key=au.access_token_key, access_token_secret=au.access_token_secret)
             t = api.GetUserTimeline(screen_name='@realDonaldTrump', count=5)
             tweets = [i.AsDict() for i in t]
             sum_tweet=''
