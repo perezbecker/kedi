@@ -220,7 +220,7 @@ if __name__ == '__main__':
                 set_decimal(4, 0)
             write_string(localtime.strftime('%H%M%S'), kerning=False)
             show()
-            time.sleep(0.05)
+            time.sleep(0.5)
             ButtonPresses = buttondata.getTicks()
             print "Clock ", ButtonPresses
 
@@ -229,7 +229,7 @@ if __name__ == '__main__':
             clear()
             write_string(bikestatus, kerning=False)
             show()
-            time.sleep(0.05)
+            time.sleep(0.5)
             ButtonPresses = buttondata.getTicks()
             print "Bike ", ButtonPresses
 
@@ -251,7 +251,7 @@ if __name__ == '__main__':
             clear()
             write_string(busarrival, kerning=False)
             show()
-            time.sleep(0.05)
+            time.sleep(0.5)
             ButtonPresses = buttondata.getTicks()
             print "Bus ", ButtonPresses
 
@@ -265,6 +265,7 @@ if __name__ == '__main__':
                 show()
                 if time.time() > timeout:
                     break
+            time.sleep(0.5)
             ButtonPresses = buttondata.getTicks()
             print "Twitter ", ButtonPresses
 
