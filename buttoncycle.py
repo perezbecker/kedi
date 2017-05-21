@@ -323,4 +323,5 @@ if __name__ == '__main__':
     TwitterTrack.terminate()
 
     GPIO.cleanup()
+    print "Shutting down"
     os.system("sudo shutdown now -h")
