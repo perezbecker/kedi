@@ -236,7 +236,6 @@ if __name__ == '__main__':
             write_string(weatherreport)
             scroll()
             show()
-            time.sleep(0.05)
             ButtonPresses = buttondata.getTicks()
 
         #3 Bus
@@ -253,7 +252,6 @@ if __name__ == '__main__':
             write_string(twittermessages)
             scroll()
             show()
-            time.sleep(0.05)
             ButtonPresses = buttondata.getTicks()
 
         #5 OffButton
