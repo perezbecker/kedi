@@ -234,8 +234,12 @@ if __name__ == '__main__':
         while(ButtonPresses % NumberOfModules == 2):
             clear()
             write_string(weatherreport)
-            scroll()
-            show()
+            timeout = time.time() + 20
+            while True:
+                scroll()
+                show()
+                if time.time() > timeout:
+                    break
             ButtonPresses = buttondata.getTicks()
 
         #3 Bus
@@ -250,8 +254,12 @@ if __name__ == '__main__':
         while(ButtonPresses % NumberOfModules == 4):
             clear()
             write_string(twittermessages)
-            scroll()
-            show()
+            timeout = time.time() + 20
+            while True:
+                scroll()
+                show()
+                if time.time() > timeout:
+                    break
             ButtonPresses = buttondata.getTicks()
 
         #5 OffButton
