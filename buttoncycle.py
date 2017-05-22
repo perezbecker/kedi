@@ -223,6 +223,7 @@ if __name__ == '__main__':
             time.sleep(0.05)
             ButtonPresses_aux = buttondata.getTicks()
             if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
+            time.sleep(0.05)
             print "Clock ", ButtonPresses
 
         #1 Bike
@@ -233,6 +234,7 @@ if __name__ == '__main__':
             time.sleep(0.5)
             ButtonPresses_aux = buttondata.getTicks()
             if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
+            time.sleep(0.05)
             print "Bike ", ButtonPresses
 
         #2 Weather
@@ -247,6 +249,7 @@ if __name__ == '__main__':
                     break
             ButtonPresses_aux = buttondata.getTicks()
             if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
+            time.sleep(0.05)
             print "Weather ", ButtonPresses
 
         #3 Bus
@@ -257,6 +260,7 @@ if __name__ == '__main__':
             time.sleep(0.5)
             ButtonPresses_aux = buttondata.getTicks()
             if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
+            time.sleep(0.05)
             print "Bus ", ButtonPresses
 
         #4 Twitter
@@ -272,6 +276,7 @@ if __name__ == '__main__':
             time.sleep(0.5)
             ButtonPresses_aux = buttondata.getTicks()
             if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
+            time.sleep(0.05)
             print "Twitter ", ButtonPresses
 
         #5 OffButton
@@ -282,6 +287,7 @@ if __name__ == '__main__':
             time.sleep(1)
             ButtonPresses_aux = buttondata.getTicks()
             if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
+            time.sleep(0.05)
             print "Offbutton ", ButtonPresses
             if(ButtonPresses % NumberOfModules != 5):
                 break
@@ -292,6 +298,7 @@ if __name__ == '__main__':
             time.sleep(1)
             ButtonPresses_aux = buttondata.getTicks()
             if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
+            time.sleep(0.05)
             if(ButtonPresses % NumberOfModules != 5):
                 break
 
@@ -301,6 +308,7 @@ if __name__ == '__main__':
             time.sleep(1)
             ButtonPresses_aux = buttondata.getTicks()
             if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
+            time.sleep(0.05)
             if(ButtonPresses % NumberOfModules != 5):
                 break
 
@@ -310,6 +318,7 @@ if __name__ == '__main__':
             time.sleep(1)
             ButtonPresses_aux = buttondata.getTicks()
             if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
+            time.sleep(0.05)
             if(ButtonPresses % NumberOfModules != 5):
                 break
 
