@@ -11,7 +11,7 @@ from threading import Thread
 
 import twitter
 
-from microdotphat import write_string, scroll, clear, show, set_decimal
+from microdotphat import write_string, scroll, clear, show, set_decimal,update
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
@@ -243,8 +243,6 @@ if __name__ == '__main__':
         #0 Clock
         while(ButtonPresses % NumberOfModules == 0):
             clear()
-            show()
-            clear()
             if localtime.second % 2 == 0:
                 set_decimal(2, 1)
                 set_decimal(4, 1)
@@ -259,8 +257,6 @@ if __name__ == '__main__':
         #1 Bike
         while(ButtonPresses % NumberOfModules == 1):
             clear()
-            show()
-            clear()
             write_string(bikestatus, kerning=False)
             show()
             time.sleep(0.05)
@@ -269,18 +265,14 @@ if __name__ == '__main__':
         #2 Weather
         while(ButtonPresses % NumberOfModules == 4):
             clear()
-            show()
-            clear()
             write_string(weatherreport)
             while(ButtonPresses % NumberOfModules == 4):
                 scroll()
-                show()
+                update()
             #print "Weather ", ButtonPresses
 
         #3 Bus
         while(ButtonPresses % NumberOfModules == 2):
-            clear()
-            show()
             clear()
             write_string(busarrival, kerning=False)
             show()
@@ -290,8 +282,6 @@ if __name__ == '__main__':
         #4 Twitter
         while(ButtonPresses % NumberOfModules == 9):
             clear()
-            show()
-            clear()
             write_string(twittermessages)
             while(ButtonPresses % NumberOfModules == 9):
                 scroll()
@@ -300,8 +290,6 @@ if __name__ == '__main__':
 
         #5 OffButton
         while(ButtonPresses % NumberOfModules == 3):
-            clear()
-            show()
             clear()
             write_string("BYE?", kerning=False)
             show()
