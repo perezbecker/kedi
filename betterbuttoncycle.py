@@ -263,16 +263,16 @@ if __name__ == '__main__':
             #print "Bike ", ButtonPresses
 
         #2 Weather
-        while(ButtonPresses % NumberOfModules == 2):
+        while(ButtonPresses % NumberOfModules == 9):
             clear()
-            write_string(weatherreport, kerning=True)
-            while(ButtonPresses % NumberOfModules == 2):
+            write_string(weatherreport)
+            while(ButtonPresses % NumberOfModules == 9):
                 scroll()
                 show()
             #print "Weather ", ButtonPresses
 
         #3 Bus
-        while(ButtonPresses % NumberOfModules == 3):
+        while(ButtonPresses % NumberOfModules == 2):
             clear()
             write_string(busarrival, kerning=False)
             show()
@@ -280,43 +280,43 @@ if __name__ == '__main__':
             #print "Bus ", ButtonPresses
 
         #4 Twitter
-        while(ButtonPresses % NumberOfModules == 4):
+        while(ButtonPresses % NumberOfModules == 9):
             clear()
-            write_string(twittermessages, kerning=True)
-            while(ButtonPresses % NumberOfModules == 4):
+            write_string(twittermessages)
+            while(ButtonPresses % NumberOfModules == 9):
                 scroll()
                 show()
             #print "Twitter ", ButtonPresses
 
         #5 OffButton
-        while(ButtonPresses % NumberOfModules == 5):
+        while(ButtonPresses % NumberOfModules == 3):
             clear()
             write_string("BYE?", kerning=False)
             show()
             time.sleep(1)
             #print "Offbutton ", ButtonPresses
-            if(ButtonPresses % NumberOfModules != 5):
+            if(ButtonPresses % NumberOfModules != 3):
                 break
 
             clear()
             write_string("BYE? 3", kerning=False)
             show()
             time.sleep(1)
-            if(ButtonPresses % NumberOfModules != 5):
+            if(ButtonPresses % NumberOfModules != 3):
                 break
 
             clear()
             write_string("BYE? 2", kerning=False)
             show()
             time.sleep(1)
-            if(ButtonPresses % NumberOfModules != 5):
+            if(ButtonPresses % NumberOfModules != 3):
                 break
 
             clear()
             write_string("BYE? 1", kerning=False)
             show()
             time.sleep(1)
-            if(ButtonPresses % NumberOfModules != 5):
+            if(ButtonPresses % NumberOfModules != 3):
                 break
 
             clear()
