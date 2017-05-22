@@ -251,7 +251,7 @@ if __name__ == '__main__':
                 set_decimal(4, 0)
             write_string(localtime.strftime('%H%M%S'), kerning=False)
             show()
-            time.sleep(0.5)
+            time.sleep(0.05)
             #print "Clock ", ButtonPresses
 
         #1 Bike
@@ -259,47 +259,37 @@ if __name__ == '__main__':
             clear()
             write_string(bikestatus, kerning=False)
             show()
-            time.sleep(0.5)
+            time.sleep(0.05)
             #print "Bike ", ButtonPresses
 
         #2 Weather
-        while(ButtonPresses % NumberOfModules == 8):
+        while(ButtonPresses % NumberOfModules == 2):
             clear()
             write_string(weatherreport)
-            timeout = time.time() + 20
-            while True:
+            while(ButtonPresses % NumberOfModules == 2):
                 scroll()
                 show()
-                if time.time() > timeout:
-                    break
-            ButtonPresses_aux = buttondata.getTicks()
-            if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
-            time.sleep(0.5)
             #print "Weather ", ButtonPresses
 
         #3 Bus
-        while(ButtonPresses % NumberOfModules == 2):
+        while(ButtonPresses % NumberOfModules == 3):
             clear()
             write_string(busarrival, kerning=False)
             show()
-            time.sleep(0.5)
+            time.sleep(0.05)
             #print "Bus ", ButtonPresses
 
         #4 Twitter
-        while(ButtonPresses % NumberOfModules == 9):
+        while(ButtonPresses % NumberOfModules == 4):
             clear()
             write_string(twittermessages)
-            timeout = time.time() + 20
-            while True:
+            while(ButtonPresses % NumberOfModules == 4):
                 scroll()
                 show()
-                if time.time() > timeout:
-                    break
-            time.sleep(0.5)
             #print "Twitter ", ButtonPresses
 
         #5 OffButton
-        while(ButtonPresses % NumberOfModules == 3):
+        while(ButtonPresses % NumberOfModules == 5):
             clear()
             write_string("BYE?", kerning=False)
             show()
