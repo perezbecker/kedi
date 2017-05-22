@@ -13,6 +13,11 @@ import twitter
 
 from microdotphat import write_string, scroll, clear, show, set_decimal
 import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BCM)
+
+GPIO.setup(26,GPIO.IN)
+input = GPIO.input(26)
+
 #import ButtonClass
 
 global localtime
@@ -247,7 +252,7 @@ if __name__ == '__main__':
             write_string(localtime.strftime('%H%M%S'), kerning=False)
             show()
             time.sleep(0.5)
-            print "Clock ", ButtonPresses
+            #print "Clock ", ButtonPresses
 
         #1 Bike
         while(ButtonPresses % NumberOfModules == 1):
@@ -255,7 +260,7 @@ if __name__ == '__main__':
             write_string(bikestatus, kerning=False)
             show()
             time.sleep(0.5)
-            print "Bike ", ButtonPresses
+            #print "Bike ", ButtonPresses
 
         #2 Weather
         while(ButtonPresses % NumberOfModules == 8):
@@ -270,7 +275,7 @@ if __name__ == '__main__':
             ButtonPresses_aux = buttondata.getTicks()
             if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
             time.sleep(0.5)
-            print "Weather ", ButtonPresses
+            #print "Weather ", ButtonPresses
 
         #3 Bus
         while(ButtonPresses % NumberOfModules == 2):
@@ -278,7 +283,7 @@ if __name__ == '__main__':
             write_string(busarrival, kerning=False)
             show()
             time.sleep(0.5)
-            print "Bus ", ButtonPresses
+            #print "Bus ", ButtonPresses
 
         #4 Twitter
         while(ButtonPresses % NumberOfModules == 9):
@@ -291,7 +296,7 @@ if __name__ == '__main__':
                 if time.time() > timeout:
                     break
             time.sleep(0.5)
-            print "Twitter ", ButtonPresses
+            #print "Twitter ", ButtonPresses
 
         #5 OffButton
         while(ButtonPresses % NumberOfModules == 3):
@@ -299,7 +304,7 @@ if __name__ == '__main__':
             write_string("BYE?", kerning=False)
             show()
             time.sleep(1)
-            print "Offbutton ", ButtonPresses
+            #print "Offbutton ", ButtonPresses
             if(ButtonPresses % NumberOfModules != 5):
                 break
 
