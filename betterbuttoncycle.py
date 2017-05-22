@@ -39,6 +39,7 @@ class getButtonPresses:
              #if the last reading was low and this one high, print
              if ((not prev_input) and input):
                ButtonPresses = ButtonPresses+1
+               print("Button pressed")
              #update previous input
              prev_input = input
              #slight pause to debounce
@@ -245,7 +246,7 @@ if __name__ == '__main__':
                 set_decimal(4, 0)
             write_string(localtime.strftime('%H%M%S'), kerning=False)
             show()
-            time.sleep(0.05)
+            time.sleep(0.5)
             print "Clock ", ButtonPresses
 
         #1 Bike
@@ -253,7 +254,7 @@ if __name__ == '__main__':
             clear()
             write_string(bikestatus, kerning=False)
             show()
-            time.sleep(0.05)
+            time.sleep(0.5)
             print "Bike ", ButtonPresses
 
         #2 Weather
@@ -268,7 +269,7 @@ if __name__ == '__main__':
                     break
             ButtonPresses_aux = buttondata.getTicks()
             if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
-            time.sleep(0.05)
+            time.sleep(0.5)
             print "Weather ", ButtonPresses
 
         #3 Bus
@@ -276,7 +277,7 @@ if __name__ == '__main__':
             clear()
             write_string(busarrival, kerning=False)
             show()
-            time.sleep(0.05)
+            time.sleep(0.5)
             print "Bus ", ButtonPresses
 
         #4 Twitter
@@ -289,7 +290,7 @@ if __name__ == '__main__':
                 show()
                 if time.time() > timeout:
                     break
-            time.sleep(0.05)
+            time.sleep(0.5)
             print "Twitter ", ButtonPresses
 
         #5 OffButton
