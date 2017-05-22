@@ -232,7 +232,7 @@ if __name__ == '__main__':
     twittermessages='T-sync'
 
 
-    NumberOfModules = 5
+    NumberOfModules = 4
 
 
     print "ButtonPresses", ButtonPresses
