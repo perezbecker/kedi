@@ -265,7 +265,7 @@ if __name__ == '__main__':
         #2 Weather
         while(ButtonPresses % NumberOfModules == 2):
             clear()
-            write_string(weatherreport)
+            write_string(weatherreport, kerning=True)
             while(ButtonPresses % NumberOfModules == 2):
                 scroll()
                 show()
@@ -282,7 +282,7 @@ if __name__ == '__main__':
         #4 Twitter
         while(ButtonPresses % NumberOfModules == 4):
             clear()
-            write_string(twittermessages)
+            write_string(twittermessages, kerning=True)
             while(ButtonPresses % NumberOfModules == 4):
                 scroll()
                 show()
