@@ -232,7 +232,7 @@ if __name__ == '__main__':
     twittermessages='T-sync'
 
 
-    NumberOfModules = 4
+    NumberOfModules = 5
 
 
     print "ButtonPresses", ButtonPresses
@@ -267,12 +267,12 @@ if __name__ == '__main__':
             #print "Bike ", ButtonPresses
 
         #2 Weather
-        while(ButtonPresses % NumberOfModules == 9):
+        while(ButtonPresses % NumberOfModules == 4):
             clear()
             show()
             clear()
             write_string(weatherreport)
-            while(ButtonPresses % NumberOfModules == 9):
+            while(ButtonPresses % NumberOfModules == 4):
                 scroll()
                 show()
             #print "Weather ", ButtonPresses
