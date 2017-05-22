@@ -220,8 +220,9 @@ if __name__ == '__main__':
                 set_decimal(4, 0)
             write_string(localtime.strftime('%H%M%S'), kerning=False)
             show()
-            time.sleep(0.5)
-            ButtonPresses = buttondata.getTicks()
+            time.sleep(0.05)
+            ButtonPresses_aux = buttondata.getTicks()
+            if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
             print "Clock ", ButtonPresses
 
         #1 Bike
@@ -230,7 +231,8 @@ if __name__ == '__main__':
             write_string(bikestatus, kerning=False)
             show()
             time.sleep(0.5)
-            ButtonPresses = buttondata.getTicks()
+            ButtonPresses_aux = buttondata.getTicks()
+            if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
             print "Bike ", ButtonPresses
 
         #2 Weather
@@ -243,7 +245,8 @@ if __name__ == '__main__':
                 show()
                 if time.time() > timeout:
                     break
-            ButtonPresses = buttondata.getTicks()
+            ButtonPresses_aux = buttondata.getTicks()
+            if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
             print "Weather ", ButtonPresses
 
         #3 Bus
@@ -252,7 +255,8 @@ if __name__ == '__main__':
             write_string(busarrival, kerning=False)
             show()
             time.sleep(0.5)
-            ButtonPresses = buttondata.getTicks()
+            ButtonPresses_aux = buttondata.getTicks()
+            if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
             print "Bus ", ButtonPresses
 
         #4 Twitter
@@ -266,7 +270,8 @@ if __name__ == '__main__':
                 if time.time() > timeout:
                     break
             time.sleep(0.5)
-            ButtonPresses = buttondata.getTicks()
+            ButtonPresses_aux = buttondata.getTicks()
+            if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
             print "Twitter ", ButtonPresses
 
         #5 OffButton
@@ -275,7 +280,8 @@ if __name__ == '__main__':
             write_string("BYE?", kerning=False)
             show()
             time.sleep(1)
-            ButtonPresses = buttondata.getTicks()
+            ButtonPresses_aux = buttondata.getTicks()
+            if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
             print "Offbutton ", ButtonPresses
             if(ButtonPresses % NumberOfModules != 5):
                 break
@@ -284,6 +290,8 @@ if __name__ == '__main__':
             write_string("BYE? 3", kerning=False)
             show()
             time.sleep(1)
+            ButtonPresses_aux = buttondata.getTicks()
+            if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
             if(ButtonPresses % NumberOfModules != 5):
                 break
 
@@ -291,6 +299,8 @@ if __name__ == '__main__':
             write_string("BYE? 2", kerning=False)
             show()
             time.sleep(1)
+            ButtonPresses_aux = buttondata.getTicks()
+            if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
             if(ButtonPresses % NumberOfModules != 5):
                 break
 
@@ -298,6 +308,8 @@ if __name__ == '__main__':
             write_string("BYE? 1", kerning=False)
             show()
             time.sleep(1)
+            ButtonPresses_aux = buttondata.getTicks()
+            if ButtonPresses_aux != ButtonPresses: ButtonPresses=ButtonPresses+1
             if(ButtonPresses % NumberOfModules != 5):
                 break
 
