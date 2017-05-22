@@ -192,7 +192,7 @@ if __name__ == '__main__':
     TwitterThread.start()
 
 
-
+    localtime=datetime.datetime.now()
     bikestatus='C-sync'
     weatherreport='W-sync'
     busarrival='B-sync'
