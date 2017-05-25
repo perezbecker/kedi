@@ -105,7 +105,7 @@ class getBike:
             DocksKendallT2=DocksAvailable[StationCode.index(KendallT2Code)]
 
             bikestatus='E'+str(min(9,BikesErie))+'V'+str(min(9,BikesVassar))+'K'+str(min(9,DocksKendallT+DocksKendallT2))
-            time.sleep(10)
+            time.sleep(60)
 
 class getWeather:
     def __init__(self):
