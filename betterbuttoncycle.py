@@ -151,27 +151,25 @@ class getBus:
         global busarrival
 
         while self._running:
-            stops = [
+            stop = [
               ( 'mbta', '47', '1812', 'Central Square' ), #47 stop Brookline/Putnam, towards Central Square
             ]
 
-            predictList = []
-            for s in stops:
-                predictList.append(predict(s))
+
+            BusPrediction=predict(stop[0])
 
             time.sleep(4) # Allow a moment for initial results
 
 
             currentTime = time.time()
-            print predictList[0].predictions[0]
-            for pl in predictList:
-                #print pl.data[1] + ' ' + pl.data[3] + ':'
-                if pl.predictions: # List of arrival times, in seconds
-                    t = pl.predictions[0] - (currentTime - pl.lastQueryTime)
-                    busarrival='Bus:'+str(int(t/60))
+            print BusPrediction.predictions[0]
 
-                else:
-                    busarrival='No Bus'
+            if BusPrediction.predictions[0]: # List of arrival times, in seconds
+                t = BusPrediction.predictions[0] - (currentTime - BusPrediction.lastQueryTime)
+                busarrival='Bus:'+str(int(t/60))
+
+            else:
+                busarrival='No Bus'
 
             time.sleep(20)
 
@@ -392,7 +390,6 @@ if __name__ == '__main__':
         # print "TwitterMessages", twittermessages
 
     clear()
-    write_string('')
     show()
     ButtonTrack.terminate()
     TimeTrack.terminate()
