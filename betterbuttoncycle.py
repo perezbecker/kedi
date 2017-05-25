@@ -238,6 +238,16 @@ class daysUntilStreetSweep:
 
 if __name__ == '__main__':
 
+    ButtonPresses=0
+    localtime=datetime.now()
+    bikestatus='C-sync'
+    weatherreport='W-sync'
+    busarrival='B-sync'
+    twittermessages='T-sync'
+    daysTilSweep='S-sync'
+
+    NumberOfModules = 5
+
     ButtonTrack = getButtonPresses()
     ButtonThread = Thread(target=ButtonTrack.run)
     ButtonThread.start()
@@ -266,15 +276,7 @@ if __name__ == '__main__':
     SweepThread = Thread(target=SweepTrack.run)
     SweepThread.start()
 
-    ButtonPresses=0
-    localtime=datetime.now()
-    bikestatus='C-sync'
-    weatherreport='W-sync'
-    busarrival='B-sync'
-    twittermessages='T-sync'
-    daysTilSweep='S-sync'
 
-    NumberOfModules = 5
 
     print "ButtonPresses", ButtonPresses
     Exit = False
