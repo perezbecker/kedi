@@ -163,7 +163,7 @@ class getBus:
 
 
             currentTime = time.time()
-            #print
+            print predictList[0].predictions[0]
             for pl in predictList:
                 #print pl.data[1] + ' ' + pl.data[3] + ':'
                 if pl.predictions: # List of arrival times, in seconds
