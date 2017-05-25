@@ -1,4 +1,5 @@
-import datetime
+from datetime import datetime, timedelta
+from calendar import mdays
 import time
 import json
 import requests
@@ -26,6 +27,7 @@ global weatherreport
 global busarrival
 global twittermessages
 global ButtonPresses
+global daysTilSweep
 
 
 class getButtonPresses:
@@ -61,7 +63,7 @@ class getTime:
         global localtime
         while self._running:
             time.sleep(0.05)
-            t = datetime.datetime.now()
+            t = datetime.now()
             localtime = t
 
 class getBike:
@@ -197,6 +199,42 @@ class getTwitter:
             time.sleep(1000)
 
 
+class daysUntilStreetSweep:
+    def __init__(self):
+        self._running = True
+
+    def terminate(self):
+        self._running = False
+
+    def run(self):
+        global daysTilSweep
+
+        while self._running:
+
+            the_date=datetime.now()
+            nth_week=1
+            week_day=4 #First Friday of Month
+
+            temp = the_date.replace(day=1)
+            adj = (week_day - temp.weekday()) % 7
+            temp += timedelta(days=adj)
+            temp += timedelta(weeks=nth_week-1)
+            firstOption = (temp - the_date).days
+            if(firstOption >= 0):
+                daysTilSweep = 'Car:'+str(firstOption)
+            else:
+                new_date_temp=the_date.replace(day=1)
+                new_date=new_date_temp + timedelta(mdays[new_date_temp.month])
+                temp2 = new_date.replace(day=1)
+                adj2 = (week_day - temp2.weekday()) % 7
+                temp2 += timedelta(days=adj2)
+                temp2 += timedelta(weeks=nth_week-1)
+                secondOption = (temp2 - the_date).days
+                daysTilSweep = 'Car:'+str(secondOption)
+
+            time.sleep(1000)
+
+
 if __name__ == '__main__':
 
     ButtonTrack = getButtonPresses()
@@ -223,17 +261,19 @@ if __name__ == '__main__':
     TwitterThread = Thread(target=TwitterTrack.run)
     TwitterThread.start()
 
+    SweepTrack = daysUntilStreetSweep()
+    SweepThread = Thread(target=SweepTrack.run)
+    SweepThread.start()
 
     ButtonPresses=0
-    localtime=datetime.datetime.now()
+    localtime=datetime.now()
     bikestatus='C-sync'
     weatherreport='W-sync'
     busarrival='B-sync'
     twittermessages='T-sync'
-
+    daysTilSweep='S-sync'
 
     NumberOfModules = 4
-
 
     print "ButtonPresses", ButtonPresses
     Exit = False
@@ -243,6 +283,7 @@ if __name__ == '__main__':
         print "BikeStatus", bikestatus
         print "WeatherReport", weatherreport
         print "BusArrival", busarrival
+        print "MoveCar", daysTilSweep
 
         #0 Clock
         while(ButtonPresses % NumberOfModules == 0):
@@ -266,16 +307,8 @@ if __name__ == '__main__':
             time.sleep(0.05)
             #print "Bike ", ButtonPresses
 
-        #2 Weather
-        while(ButtonPresses % NumberOfModules == 4):
-            clear()
-            write_string(weatherreport)
-            while(ButtonPresses % NumberOfModules == 4):
-                scroll()
-                show()
-            #print "Weather ", ButtonPresses
 
-        #3 Bus
+        #2 Bus
         while(ButtonPresses % NumberOfModules == 2):
             clear()
             write_string(busarrival, kerning=False)
@@ -283,44 +316,43 @@ if __name__ == '__main__':
             time.sleep(0.05)
             #print "Bus ", ButtonPresses
 
-        #4 Twitter
-        while(ButtonPresses % NumberOfModules == 9):
-            clear()
-            write_string(twittermessages)
-            while(ButtonPresses % NumberOfModules == 9):
-                scroll()
-                show()
-            #print "Twitter ", ButtonPresses
-
-        #5 Offbutton
+        #3 StreetSweep
         while(ButtonPresses % NumberOfModules == 3):
+            clear()
+            write_string(daysTilSweep, kerning=False)
+            show()
+            time.sleep(0.05)
+
+
+        #4 Offbutton
+        while(ButtonPresses % NumberOfModules == 4):
             clear()
             write_string("BYE?", kerning=False)
             show()
             time.sleep(1)
             #print "Offbutton ", ButtonPresses
-            if(ButtonPresses % NumberOfModules != 3):
+            if(ButtonPresses % NumberOfModules != 4):
                 break
 
             clear()
             write_string("BYE? 3", kerning=False)
             show()
             time.sleep(1)
-            if(ButtonPresses % NumberOfModules != 3):
+            if(ButtonPresses % NumberOfModules != 4):
                 break
 
             clear()
             write_string("BYE? 2", kerning=False)
             show()
             time.sleep(1)
-            if(ButtonPresses % NumberOfModules != 3):
+            if(ButtonPresses % NumberOfModules != 4):
                 break
 
             clear()
             write_string("BYE? 1", kerning=False)
             show()
             time.sleep(1)
-            if(ButtonPresses % NumberOfModules != 3):
+            if(ButtonPresses % NumberOfModules != 4):
                 break
 
             clear()
@@ -330,6 +362,23 @@ if __name__ == '__main__':
             Exit = True
             break
 
+        #5 Weather
+        while(ButtonPresses % NumberOfModules == 5):
+            clear()
+            write_string(weatherreport)
+            while(ButtonPresses % NumberOfModules == 5):
+                scroll()
+                show()
+            #print "Weather ", ButtonPresses
+
+        #6 Twitter
+        while(ButtonPresses % NumberOfModules == 6):
+            clear()
+            write_string(twittermessages)
+            while(ButtonPresses % NumberOfModules == 6):
+                scroll()
+                show()
+            #print "Twitter ", ButtonPresses
 
 
         # print "CurrentTime", localtime
@@ -344,6 +393,7 @@ if __name__ == '__main__':
     WeatherTrack.terminate()
     BusTrack.terminate()
     TwitterTrack.terminate()
+    SweepTrack.terminate()
 
     GPIO.cleanup()
     print "Shutting down"
