@@ -273,7 +273,7 @@ if __name__ == '__main__':
     twittermessages='T-sync'
     daysTilSweep='S-sync'
 
-    NumberOfModules = 4
+    NumberOfModules = 5
 
     print "ButtonPresses", ButtonPresses
     Exit = False
