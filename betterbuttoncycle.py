@@ -161,13 +161,11 @@ class getBus:
             time.sleep(30) # Allow a moment for results
 
             currentTime = time.time()
-            print BusPrediction.predictions[0]
 
-            if BusPrediction.predictions[0]: # List of arrival times, in seconds
+            try:
                 t = BusPrediction.predictions[0] - (currentTime - BusPrediction.lastQueryTime)
                 busarrival='Bus:'+str(int(t/60))
-                print busarrival
-            else:
+            except:
                 busarrival='No Bus'
 
 
