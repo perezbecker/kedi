@@ -173,7 +173,6 @@ class getBus:
                 else:
                     busarrival='No Bus'
 
-            prevTime = currentTime;
             time.sleep(20)
 
 class getTwitter:
@@ -285,9 +284,10 @@ if __name__ == '__main__':
     while Exit==False:
 
         print "BikeStatus", bikestatus
-        print "WeatherReport", weatherreport
         print "BusArrival", busarrival
         print "MoveCar", daysTilSweep
+        print "WeatherReport", weatherreport
+        print "TwitterMessages", twittermessages
 
         #0 Clock
         while(ButtonPresses % NumberOfModules == 0):
@@ -392,6 +392,8 @@ if __name__ == '__main__':
         # print "TwitterMessages", twittermessages
 
     clear()
+    write_string('')
+    show()
     ButtonTrack.terminate()
     TimeTrack.terminate()
     BikeTrack.terminate()
