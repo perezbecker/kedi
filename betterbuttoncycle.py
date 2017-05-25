@@ -232,7 +232,6 @@ class daysUntilStreetSweep:
                 secondOption = (temp2 - the_date).days
                 daysTilSweep = 'Car:'+str(secondOption)
 
-            print "dsweep", daysTilSweep
             time.sleep(1000)
 
 
@@ -390,6 +389,7 @@ if __name__ == '__main__':
         # print "BusArrival", busarrival
         # print "TwitterMessages", twittermessages
 
+    clear()
     ButtonTrack.terminate()
     TimeTrack.terminate()
     BikeTrack.terminate()
