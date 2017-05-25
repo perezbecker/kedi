@@ -158,8 +158,7 @@ class getBus:
 
             BusPrediction=predict(stop[0])
 
-            time.sleep(4) # Allow a moment for initial results
-
+            time.sleep(30) # Allow a moment for results
 
             currentTime = time.time()
             print BusPrediction.predictions[0]
@@ -171,7 +170,6 @@ class getBus:
             else:
                 busarrival='No Bus'
 
-            time.sleep(20)
 
 class getTwitter:
     def __init__(self):
