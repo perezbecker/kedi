@@ -232,6 +232,7 @@ class daysUntilStreetSweep:
                 secondOption = (temp2 - the_date).days
                 daysTilSweep = 'Car:'+str(secondOption)
 
+            print "dsweep", daysTilSweep
             time.sleep(1000)
 
 
