@@ -166,7 +166,7 @@ class getBus:
             if BusPrediction.predictions[0]: # List of arrival times, in seconds
                 t = BusPrediction.predictions[0] - (currentTime - BusPrediction.lastQueryTime)
                 busarrival='Bus:'+str(int(t/60))
-
+                print busarrival
             else:
                 busarrival='No Bus'
 
