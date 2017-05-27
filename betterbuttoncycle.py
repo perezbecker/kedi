@@ -162,6 +162,7 @@ class getBus:
             time.sleep(60) # Allow a moment for results
 
             currentTime = time.time()
+            print BusPrediction.predictions
 
             try:
                 t1 = BusPrediction.predictions[0] - (currentTime - BusPrediction.lastQueryTime)
