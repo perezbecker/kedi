@@ -281,7 +281,7 @@ if __name__ == '__main__':
 
 
 
-    print "ButtonPresses", ButtonPresses
+    #print "ButtonPresses", ButtonPresses
     Exit = False
 
     while Exit==False:
