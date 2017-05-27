@@ -249,7 +249,7 @@ if __name__ == '__main__':
     twittermessages='T-sync'
     daysTilSweep='S-sync'
 
-    NumberOfModules = 6
+    NumberOfModules = 5
 
     ButtonTrack = getButtonPresses()
     ButtonThread = Thread(target=ButtonTrack.run)
