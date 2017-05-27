@@ -151,13 +151,14 @@ class getBus:
     def run(self):
         global busarrival
 
+        stop = [
+          ( 'mbta', '47', '1812', 'Central Square' ), #47 stop Brookline/Putnam, towards Central Square
+        ]
+
+        BusPrediction=predict(stop[0])
+
         while self._running:
-            stop = [
-              ( 'mbta', '47', '1812', 'Central Square' ), #47 stop Brookline/Putnam, towards Central Square
-            ]
 
-
-            BusPrediction=predict(stop[0])
 
             time.sleep(60) # Allow a moment for results
 
