@@ -105,7 +105,7 @@ class getBike:
             DocksKendallT2=DocksAvailable[StationCode.index(KendallT2Code)]
 
             bikestatus='E'+str(min(9,BikesErie))+'V'+str(min(9,BikesVassar))+'K'+str(min(9,DocksKendallT+DocksKendallT2))
-            print("Completed Bike thread")
+            #print("Completed Bike thread")
             time.sleep(60)
 
 class getWeather:
@@ -163,7 +163,7 @@ class getBus:
             time.sleep(60) # Allow a moment for results
 
             currentTime = time.time()
-            print BusPrediction.predictions
+            #print BusPrediction.predictions
 
             try:
                 t1 = BusPrediction.predictions[0] - (currentTime - BusPrediction.lastQueryTime)
@@ -175,7 +175,7 @@ class getBus:
             except:
                 busarrival='No Bus'
 
-            print("Completed Bus thread")
+            #print("Completed Bus thread")
 
 
 class getTwitter:
