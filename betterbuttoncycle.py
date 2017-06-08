@@ -14,7 +14,7 @@ from threading import Thread
 
 import twitter
 
-from microdotphat import write_string, scroll, clear, show, set_decimal
+from microdotphat import write_string, scroll, scroll_to, clear, show, set_decimal
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
@@ -295,6 +295,7 @@ if __name__ == '__main__':
         #0 Clock
         while(ButtonPresses % NumberOfModules == 0):
             clear()
+            scroll_to(0,0)
             if localtime.second % 2 == 0:
                 set_decimal(2, 1)
                 set_decimal(4, 1)
@@ -309,6 +310,7 @@ if __name__ == '__main__':
         #1 Bike
         while(ButtonPresses % NumberOfModules == 1):
             clear()
+            scroll_to(0,0)
             write_string(bikestatus, kerning=False)
             show()
             time.sleep(0.05)
@@ -318,6 +320,7 @@ if __name__ == '__main__':
         #2 Bus
         while(ButtonPresses % NumberOfModules == 2):
             clear()
+            scroll_to(0,0)
             write_string(busarrival, kerning=False)
             show()
             time.sleep(0.05)
@@ -326,6 +329,7 @@ if __name__ == '__main__':
         #3 StreetSweep
         while(ButtonPresses % NumberOfModules == 3):
             clear()
+            scroll_to(0,0)
             write_string(daysTilSweep, kerning=False)
             show()
             time.sleep(0.05)
@@ -334,6 +338,7 @@ if __name__ == '__main__':
         #4 Offbutton
         while(ButtonPresses % NumberOfModules == 4):
             clear()
+            scroll_to(0,0)
             write_string("BYE?", kerning=False)
             show()
             time.sleep(1)
@@ -342,6 +347,7 @@ if __name__ == '__main__':
                 break
 
             clear()
+            scroll_to(0,0)
             write_string("BYE? 3", kerning=False)
             show()
             time.sleep(1)
@@ -349,6 +355,7 @@ if __name__ == '__main__':
                 break
 
             clear()
+            scroll_to(0,0)
             write_string("BYE? 2", kerning=False)
             show()
             time.sleep(1)
@@ -356,6 +363,7 @@ if __name__ == '__main__':
                 break
 
             clear()
+            scroll_to(0,0)
             write_string("BYE? 1", kerning=False)
             show()
             time.sleep(1)
@@ -372,6 +380,7 @@ if __name__ == '__main__':
         #5 Weather
         while(ButtonPresses % NumberOfModules == 5):
             clear()
+            scroll_to(0,0)
             write_string(weatherreport)
             while(ButtonPresses % NumberOfModules == 5):
                 scroll()
@@ -381,6 +390,7 @@ if __name__ == '__main__':
         #6 Twitter
         while(ButtonPresses % NumberOfModules == 6):
             clear()
+            scroll_to(0,0)
             write_string(twittermessages)
             while(ButtonPresses % NumberOfModules == 6):
                 scroll()
@@ -395,6 +405,7 @@ if __name__ == '__main__':
         # print "TwitterMessages", twittermessages
 
     clear()
+    scroll_to(0,0)
     show()
     ButtonTrack.terminate()
     TimeTrack.terminate()
