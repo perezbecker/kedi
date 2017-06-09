@@ -218,7 +218,7 @@ class getTwitter:
         while self._running:
 
             api = twitter.Api(consumer_key=au.consumer_key, consumer_secret=au.consumer_secret, access_token_key=au.access_token_key, access_token_secret=au.access_token_secret)
-            t = api.GetUserTimeline(screen_name='@realDonaldTrump', count=5)
+            t = api.GetUserTimeline(screen_name='@realDonaldTrump', count=3)
             tweets = [i.AsDict() for i in t]
             sum_tweet=''
 
