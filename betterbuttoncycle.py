@@ -163,9 +163,9 @@ class getWeather:
             precipProbability = str(int(round(weatherdata['daily']['data'][wheatherindex]['precipProbability']*100.)))
 
             if(self.day=="Today"):
-                weatherreport0="Today's Weather: "+summary+" Min/Max Temp: "+minTemperature+"/"+maxTemperature+"C, Rain: "+precipProbability+"% - - -"
+                weatherreport0="- - - Today's Weather: "+summary+" Min/Max Temp: "+minTemperature+"/"+maxTemperature+"C, Rain: "+precipProbability+"% - - -"
             if(self.day=="Tomorrow"):
-                weatherreport1="Tomorrow's Weather: "+summary+" Min/Max Temp: "+minTemperature+"/"+maxTemperature+"C, Rain: "+precipProbability+"% - - -"
+                weatherreport1="- - - Tomorrow's Weather: "+summary+" Min/Max Temp: "+minTemperature+"/"+maxTemperature+"C, Rain: "+precipProbability+"% - - -"
             time.sleep(3600)
 
 class getBus:
@@ -220,7 +220,7 @@ class getTwitter:
             api = twitter.Api(consumer_key=au.consumer_key, consumer_secret=au.consumer_secret, access_token_key=au.access_token_key, access_token_secret=au.access_token_secret)
             t = api.GetUserTimeline(screen_name='@realDonaldTrump', count=3)
             tweets = [i.AsDict() for i in t]
-            sum_tweet=''
+            sum_tweet='- - - '
 
             for t in tweets:
                 sum_tweet=sum_tweet+' - - - '+t['text']
