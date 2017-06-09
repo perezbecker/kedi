@@ -125,8 +125,8 @@ class getBike:
             #print("Completed Bike thread")
             time.sleep(60)
 
-class getWeather(day):
-    def __init__(self):
+class getWeather:
+    def __init__(self,day):
         self._running = True
         self.day=day
 
