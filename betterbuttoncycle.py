@@ -196,9 +196,9 @@ class getBus:
                 t1 = BusPrediction.predictions[0] - (currentTime - BusPrediction.lastQueryTime)
                 try:
                     t2 = BusPrediction.predictions[1] - (currentTime - BusPrediction.lastQueryTime)
+                    busarrival=str(int(t1/60))+','+str(int(t2/60))+'.'
                 except:
-                    t2 = 'XX'
-                busarrival=str(int(t1/60))+','+str(int(t2/60))+'.'
+                    busarrival=str(int(t1/60))+'.'
             except:
                 busarrival='No Bus'
 
