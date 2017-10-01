@@ -214,7 +214,7 @@ class getBus:
                         t2string="<0"
                     elif(t2>5940):
                         t2string="++"
-			        else:
+                    else:
                         t2string=str(int(t2/60))
 
                     busarrival=t1string+','+t2string+'.'
