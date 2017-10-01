@@ -202,7 +202,7 @@ class getBus:
                     t1string="<0"
                 elif(t1>5940):
                     t1string="++"
-		        else:
+                else:
                     t1string=str(int(t1/60))
 
                 try:
