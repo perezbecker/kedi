@@ -189,16 +189,37 @@ class getBus:
 
             time.sleep(60) # Allow a moment for results
 
+            LetterTime=["A","B","C","D","E","F"]
             currentTime = time.time()
             #print BusPrediction.predictions
 
             try:
                 t1 = BusPrediction.predictions[0] - (currentTime - BusPrediction.lastQueryTime)
+
+                if(t1<600 and t1>=0):
+                    t1string = str(int(t1/60))+LetterTime[int((t1%60)/10)]
+                elif(t1<0):
+                    t1string="<0"
+                elif(t1>5940):
+                    t1string="++"
+		        else:
+                    t1string=str(int(t1/60))
+
                 try:
                     t2 = BusPrediction.predictions[1] - (currentTime - BusPrediction.lastQueryTime)
-                    busarrival=str(int(t1/60))+','+str(int(t2/60))+'.'
+
+                    if(t2<600 and t2>=0):
+                        t2string = str(int(t2/60))+LetterTime[int((t2%60)/10)]
+                    elif(t2<0):
+                        t2string="<0"
+                    elif(t2>5940):
+                        t2string="++"
+			        else:
+                        t2string=str(int(t2/60))
+
+                    busarrival=t1string+','+t2string+'.'
                 except:
-                    busarrival=str(int(t1/60))+'.'
+                    busarrival='Bus:'+t1string
             except:
                 busarrival='No Bus'
 
