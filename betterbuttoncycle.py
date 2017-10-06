@@ -186,8 +186,7 @@ class getBus:
 
         while self._running:
 
-
-            time.sleep(60) # Allow a moment for results
+            time.sleep(1) # Allow a moment for results
 
             LetterTime=["A","B","C","D","E","F"]
             currentTime = time.time()
@@ -301,211 +300,209 @@ if __name__ == '__main__':
 
     NumberOfModules = 9
 
+    ButtonTrack = getButtonPresses()
+    ButtonThread = Thread(target=ButtonTrack.run)
+    ButtonThread.start()
+
+    TimeTrack = getTime()
+    TimeThread = Thread(target=TimeTrack.run)
+    TimeThread.start()
+
+    UTCTimeTrack = getUTCTime()
+    UTCTimeThread = Thread(target=UTCTimeTrack.run)
+    UTCTimeThread.start()
+
+    BikeTrack = getBike()
+    BikeThread = Thread(target=BikeTrack.run)
+    BikeThread.start()
+
+    WeatherTrack0 = getWeather("Today")
+    WeatherThread0 = Thread(target=WeatherTrack0.run)
+    WeatherThread0.start()
+
+    WeatherTrack1 = getWeather("Tomorrow")
+    WeatherThread1 = Thread(target=WeatherTrack1.run)
+    WeatherThread1.start()
+
+    BusTrack = getBus()
+    BusThread = Thread(target=BusTrack.run)
+    BusThread.start()
+
+    TwitterTrack = getTwitter()
+    TwitterThread = Thread(target=TwitterTrack.run)
+    TwitterThread.start()
+
+    SweepTrack = daysUntilStreetSweep()
+    SweepThread = Thread(target=SweepTrack.run)
+    SweepThread.start()
+
+
 
     #print "ButtonPresses", ButtonPresses
     Exit = False
 
     while Exit==False:
 
-        ButtonTrack = getButtonPresses()
-        ButtonThread = Thread(target=ButtonTrack.run)
-        ButtonThread.start()
 
-        TimeTrack = getTime()
-        TimeThread = Thread(target=TimeTrack.run)
-        TimeThread.start()
-
-        UTCTimeTrack = getUTCTime()
-        UTCTimeThread = Thread(target=UTCTimeTrack.run)
-        UTCTimeThread.start()
-
-        BikeTrack = getBike()
-        BikeThread = Thread(target=BikeTrack.run)
-        BikeThread.start()
-
-        WeatherTrack0 = getWeather("Today")
-        WeatherThread0 = Thread(target=WeatherTrack0.run)
-        WeatherThread0.start()
-
-        WeatherTrack1 = getWeather("Tomorrow")
-        WeatherThread1 = Thread(target=WeatherTrack1.run)
-        WeatherThread1.start()
-
-        BusTrack = getBus()
-        BusThread = Thread(target=BusTrack.run)
-        BusThread.start()
-
-        TwitterTrack = getTwitter()
-        TwitterThread = Thread(target=TwitterTrack.run)
-        TwitterThread.start()
-
-        SweepTrack = daysUntilStreetSweep()
-        SweepThread = Thread(target=SweepTrack.run)
-        SweepThread.start()
-
-        print "* * * RESTARTING THREADS * * *"
+        print "* * * Running Threads * * *"
         for thread in enumerate():
             print(thread.name)
 
-        t_end = time.time() + 60 * 2
+        print "* * *"
+        print "BikeStatus", bikestatus
+        print "BusArrival", busarrival
+        print "MoveCar", daysTilSweep
+        print "TodaysWeatherReport", weatherreport0
+        print "TomorrowsWeatherReport", weatherreport1
+        print "TwitterMessages", twittermessages
 
-        while (time.time() < t_end and Exit==False):
+        #0 Clock
+        while(ButtonPresses % NumberOfModules == 0):
+            clear()
+            scroll_to(0,0)
+            if localtime.second % 2 == 0:
+                set_decimal(2, 1)
+                set_decimal(4, 1)
+            else:
+                set_decimal(2, 0)
+                set_decimal(4, 0)
+            write_string(localtime.strftime('%H%M%S'), kerning=False)
+            show()
+            time.sleep(0.05)
+            #print "Clock ", ButtonPresses
 
+        #1 UTCClock
+        while(ButtonPresses % NumberOfModules == 1):
+            clear()
+            scroll_to(0,0)
+            if utctime.second % 2 == 0:
+                set_decimal(2, 1)
+                set_decimal(4, 1)
+            else:
+                set_decimal(2, 0)
+                set_decimal(4, 0)
+            write_string(utctime.strftime('%H%M%S'), kerning=False)
+            show()
+            time.sleep(0.05)
+            #print "Clock ", ButtonPresses
 
-            print "BikeStatus", bikestatus
-            print "BusArrival", busarrival
-            print "MoveCar", daysTilSweep
-            print "TodaysWeatherReport", weatherreport0
-            print "TomorrowsWeatherReport", weatherreport1
-            print "TwitterMessages", twittermessages
-
-            #0 Clock
-            while(ButtonPresses % NumberOfModules == 0):
-                clear()
-                scroll_to(0,0)
-                if localtime.second % 2 == 0:
-                    set_decimal(2, 1)
-                    set_decimal(4, 1)
-                else:
-                    set_decimal(2, 0)
-                    set_decimal(4, 0)
-                write_string(localtime.strftime('%H%M%S'), kerning=False)
-                show()
-                time.sleep(0.05)
-                #print "Clock ", ButtonPresses
-
-            #1 UTCClock
-            while(ButtonPresses % NumberOfModules == 1):
-                clear()
-                scroll_to(0,0)
-                if utctime.second % 2 == 0:
-                    set_decimal(2, 1)
-                    set_decimal(4, 1)
-                else:
-                    set_decimal(2, 0)
-                    set_decimal(4, 0)
-                write_string(utctime.strftime('%H%M%S'), kerning=False)
-                show()
-                time.sleep(0.05)
-                #print "Clock ", ButtonPresses
-
-            #2 Bike
-            while(ButtonPresses % NumberOfModules == 2):
-                clear()
-                scroll_to(0,0)
-                write_string(bikestatus, kerning=False)
-                show()
-                time.sleep(0.05)
-                #print "Bike ", ButtonPresses
+        #2 Bike
+        while(ButtonPresses % NumberOfModules == 2):
+            clear()
+            scroll_to(0,0)
+            write_string(bikestatus, kerning=False)
+            show()
+            time.sleep(0.05)
+            #print "Bike ", ButtonPresses
 
 
-            #3 Bus
-            while(ButtonPresses % NumberOfModules == 3):
-                clear()
-                scroll_to(0,0)
-                write_string(busarrival, kerning=False)
-                show()
-                time.sleep(0.05)
-                #print "Bus ", ButtonPresses
+        #3 Bus
+        while(ButtonPresses % NumberOfModules == 3):
+            clear()
+            scroll_to(0,0)
+            write_string(busarrival, kerning=False)
+            show()
+            time.sleep(0.05)
+            #print "Bus ", ButtonPresses
 
-            #4 StreetSweep
-            while(ButtonPresses % NumberOfModules == 4):
-                clear()
-                scroll_to(0,0)
-                write_string(daysTilSweep, kerning=False)
-                show()
-                time.sleep(0.05)
+        #4 StreetSweep
+        while(ButtonPresses % NumberOfModules == 4):
+            clear()
+            scroll_to(0,0)
+            write_string(daysTilSweep, kerning=False)
+            show()
+            time.sleep(0.05)
 
 
-            #5 Offbutton
-            while(ButtonPresses % NumberOfModules == 5):
-                clear()
-                scroll_to(0,0)
-                write_string("BYE?", kerning=False)
-                show()
-                time.sleep(1)
-                #print "Offbutton ", ButtonPresses
-                if(ButtonPresses % NumberOfModules != 5):
-                    break
-
-                clear()
-                scroll_to(0,0)
-                write_string("BYE? 3", kerning=False)
-                show()
-                time.sleep(1)
-                if(ButtonPresses % NumberOfModules != 5):
-                    break
-
-                clear()
-                scroll_to(0,0)
-                write_string("BYE? 2", kerning=False)
-                show()
-                time.sleep(1)
-                if(ButtonPresses % NumberOfModules != 5):
-                    break
-
-                clear()
-                scroll_to(0,0)
-                write_string("BYE? 1", kerning=False)
-                show()
-                time.sleep(1)
-                if(ButtonPresses % NumberOfModules != 5):
-                    break
-
-                clear()
-                write_string("BAIBAI", kerning=False)
-                show()
-                time.sleep(1)
-                Exit = True
+        #5 Offbutton
+        while(ButtonPresses % NumberOfModules == 5):
+            clear()
+            scroll_to(0,0)
+            write_string("BYE?", kerning=False)
+            show()
+            time.sleep(1)
+            #print "Offbutton ", ButtonPresses
+            if(ButtonPresses % NumberOfModules != 5):
                 break
 
-            #6 TodaysWeather
+            clear()
+            scroll_to(0,0)
+            write_string("BYE? 3", kerning=False)
+            show()
+            time.sleep(1)
+            if(ButtonPresses % NumberOfModules != 5):
+                break
+
+            clear()
+            scroll_to(0,0)
+            write_string("BYE? 2", kerning=False)
+            show()
+            time.sleep(1)
+            if(ButtonPresses % NumberOfModules != 5):
+                break
+
+            clear()
+            scroll_to(0,0)
+            write_string("BYE? 1", kerning=False)
+            show()
+            time.sleep(1)
+            if(ButtonPresses % NumberOfModules != 5):
+                break
+
+            clear()
+            write_string("BAIBAI", kerning=False)
+            show()
+            time.sleep(1)
+            Exit = True
+            break
+
+        #6 TodaysWeather
+        while(ButtonPresses % NumberOfModules == 6):
+            clear()
+            scroll_to(0,0)
+            write_string(weatherreport0)
             while(ButtonPresses % NumberOfModules == 6):
-                clear()
-                scroll_to(0,0)
-                write_string(weatherreport0)
-                while(ButtonPresses % NumberOfModules == 6):
-                    scroll()
-                    show()
-                #print "Weather ", ButtonPresses
+                scroll()
+                show()
+            #print "Weather ", ButtonPresses
 
-            #7 TomorrowsWeather
+        #7 TomorrowsWeather
+        while(ButtonPresses % NumberOfModules == 7):
+            clear()
+            scroll_to(0,0)
+            write_string(weatherreport1)
             while(ButtonPresses % NumberOfModules == 7):
-                clear()
-                scroll_to(0,0)
-                write_string(weatherreport1)
-                while(ButtonPresses % NumberOfModules == 7):
-                    scroll()
-                    show()
-                #print "Weather ", ButtonPresses
+                scroll()
+                show()
+            #print "Weather ", ButtonPresses
 
-            #8 Twitter
+        #8 Twitter
+        while(ButtonPresses % NumberOfModules == 8):
+            clear()
+            scroll_to(0,0)
+            write_string(twittermessages)
             while(ButtonPresses % NumberOfModules == 8):
-                clear()
-                scroll_to(0,0)
-                write_string(twittermessages)
-                while(ButtonPresses % NumberOfModules == 8):
-                    scroll()
-                    show()
-                #print "Twitter ", ButtonPresses
+                scroll()
+                show()
+            #print "Twitter ", ButtonPresses
 
 
-            # print "CurrentTime", localtime
-            # print "BikeStatus", bikestatus
-            # print "WeatherReport", weatherreport
-            # print "BusArrival", busarrival
-            # print "TwitterMessages", twittermessages
+        # print "CurrentTime", localtime
+        # print "BikeStatus", bikestatus
+        # print "WeatherReport", weatherreport
+        # print "BusArrival", busarrival
+        # print "TwitterMessages", twittermessages
 
-        clear()
-        scroll_to(0,0)
-        show()
-        ButtonTrack.terminate()
-        TimeTrack.terminate()
-        BikeTrack.terminate()
-        WeatherTrack.terminate()
-        BusTrack.terminate()
-        TwitterTrack.terminate()
-        SweepTrack.terminate()
+    clear()
+    scroll_to(0,0)
+    show()
+    ButtonTrack.terminate()
+    TimeTrack.terminate()
+    BikeTrack.terminate()
+    WeatherTrack.terminate()
+    BusTrack.terminate()
+    TwitterTrack.terminate()
+    SweepTrack.terminate()
 
     GPIO.cleanup()
     print "Shutting down"
