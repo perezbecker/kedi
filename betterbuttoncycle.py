@@ -10,7 +10,7 @@ import auth as au
 
 from predict import predict
 from urllib2 import Request, urlopen, URLError
-from threading import Thread
+from threading import Thread, enumerate
 
 import twitter
 
@@ -343,12 +343,15 @@ if __name__ == '__main__':
         SweepThread = Thread(target=SweepTrack.run)
         SweepThread.start()
 
+        print "* * * RESTARTING THREADS * * *"
+        for thread in threading.enumerate():
+            print(thread.name)
 
         t_end = time.time() + 60 * 2
 
         while (time.time() < t_end and Exit==False):
 
-            print "RESTARTING THREADS"
+
             print "BikeStatus", bikestatus
             print "BusArrival", busarrival
             print "MoveCar", daysTilSweep
