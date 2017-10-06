@@ -344,7 +344,7 @@ if __name__ == '__main__':
         SweepThread.start()
 
         print "* * * RESTARTING THREADS * * *"
-        for thread in threading.enumerate():
+        for thread in enumerate():
             print(thread.name)
 
         t_end = time.time() + 60 * 2
