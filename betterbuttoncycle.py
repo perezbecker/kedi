@@ -348,6 +348,7 @@ if __name__ == '__main__':
 
         while (time.time() < t_end and Exit==False):
 
+            print "RESTARTING THREADS"
             print "BikeStatus", bikestatus
             print "BusArrival", busarrival
             print "MoveCar", daysTilSweep
