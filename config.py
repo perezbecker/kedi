@@ -19,9 +19,9 @@ elif(hostname == "kedi1"):
     busstation = ( 'mbta', '47', '1812', 'Central Square' ) #47 stop Brookline/Putnam, towards Central Square
     altTimeZone = "UTC" #UTC only at this point
     twitter = ["@realDonaldTrump",3]
-    bike1Letter, bike1Type, bike1Codes = "E", "Pickup",  ["M32047"] #Erie
-    bike2Letter, bike2Type, bike2Codes = "V", "Pickup",  ["M32042"] #Vassar
-    bike3Letter, bike3Type, bike3Codes = "K", "Dropoff", ["M32004","M32003","M32053"] #All 3 by Kendall
+    bike1Letter, bike1Type, bike1Codes = "M", "Pickup",  ["M32053"] #Memorial
+    bike2Letter, bike2Type, bike2Codes = "K", "Pickup",  ["M32004","M32003"] #Kendal 1+2
+    bike3Letter, bike3Type, bike3Codes = "E", "Dropoff", ["M32047","M32042"] #Erie and Vassar
     StreetsweepNthWeek_Weekday = [1,4] #First Friday of Month 
 
 elif(hostname == "kedi2"):
