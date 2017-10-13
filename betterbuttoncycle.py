@@ -7,6 +7,7 @@ import json
 import requests
 import os
 import auth as au
+import config as co
 
 from predict import predict
 from urllib2 import Request, urlopen, URLError
@@ -111,17 +112,35 @@ class getBike:
                 BikesAvailable.append(int(parsedjson['stations'][i]['ba']))
                 DocksAvailable.append(int(parsedjson['stations'][i]['da']))
 
-            ErieCode='M32047'
-            VassarCode='M32042'
-            KendallTCode='M32004'
-            KendallT2Code='M32003'
+            
+            bikes1=0
+            if(co.bike1Type == "Pickup"):
+                for i in range(len(co.bike1Codes)):
+                    bikes1 += BikesAvailable[StationCode.index(co.bike1Codes[i])]
+            elif(co.bike1Type == "Dropoff"):
+                for i in range(len(co.bike1Codes)):
+                    bikes1 += DocksAvailable[StationCode.index(co.bike1Codes[i])]
 
-            BikesErie=BikesAvailable[StationCode.index(ErieCode)]
-            BikesVassar=BikesAvailable[StationCode.index(VassarCode)]
-            DocksKendallT=DocksAvailable[StationCode.index(KendallTCode)]
-            DocksKendallT2=DocksAvailable[StationCode.index(KendallT2Code)]
 
-            bikestatus='E'+str(min(9,BikesErie))+'V'+str(min(9,BikesVassar))+'K'+str(min(9,DocksKendallT+DocksKendallT2))
+            bikes2=0
+            if(co.bike2Type == "Pickup"):
+                for i in range(len(co.bike2Codes)):
+                    bikes2 += BikesAvailable[StationCode.index(co.bike2Codes[i])]
+            elif(co.bike2Type == "Dropoff"):
+                for i in range(len(co.bike2Codes)):
+                    bikes2 += DocksAvailable[StationCode.index(co.bike2Codes[i])]
+
+
+            bikes3=0
+            if(co.bike3Type == "Pickup"):
+                for i in range(len(co.bike3Codes)):
+                    bikes3 += BikesAvailable[StationCode.index(co.bike3Codes[i])]
+            elif(co.bike3Type == "Dropoff"):
+                for i in range(len(co.bike3Codes)):
+                    bikes3 += DocksAvailable[StationCode.index(co.bike3Codes[i])]
+
+
+            bikestatus=co.bike1Letter+str(min(9,bikes1))+co.bike2Letter+str(min(9,bikes2))+co.bike3Letter+str(min(9,bikes3))
             #print("Completed Bike thread")
             time.sleep(60)
 
@@ -139,8 +158,8 @@ class getWeather:
 
         while self._running:
             secret = au.DarkSkySecret
-            lat = str(au.lat)
-            lon = str(au.lon)
+            lat = str(co.lat)
+            lon = str(co.lon)
 
             request = Request('https://api.darksky.net/forecast/'+secret+'/'+lat+','+lon+'?exclude=[minutely,hourly]')
             try:
@@ -179,7 +198,7 @@ class getBus:
         global busarrival
 
         stop = [
-          ( 'mbta', '47', '1812', 'Central Square' ), #47 stop Brookline/Putnam, towards Central Square
+          co.busstation 
         ]
 
         BusPrediction=predict(stop[0])
@@ -238,7 +257,8 @@ class getTwitter:
         while self._running:
 
             api = twitter.Api(consumer_key=au.consumer_key, consumer_secret=au.consumer_secret, access_token_key=au.access_token_key, access_token_secret=au.access_token_secret)
-            t = api.GetUserTimeline(screen_name='@EPN', count=3)
+            t = api.GetUserTimeline(screen_name=co.twitter[0], count=co.twitter[1])
+
             tweets = [i.AsDict() for i in t]
             sum_tweet=''
 
@@ -263,8 +283,8 @@ class daysUntilStreetSweep:
         while self._running:
 
             the_date=datetime.now()
-            nth_week=1
-            week_day=4 #First Friday of Month
+            nth_week=co.StreetsweepNthWeek_Weekday[0]
+            week_day=co.StreetsweepNthWeek_Weekday[1]  #First Friday of Month
 
             temp = the_date.replace(day=1)
             adj = (week_day - temp.weekday()) % 7

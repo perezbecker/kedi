@@ -1,2 +1,4 @@
 *.pyc
+*.swp
 auth.py
+config.py
