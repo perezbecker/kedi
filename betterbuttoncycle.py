@@ -158,8 +158,8 @@ class getWeather:
 
         while self._running:
             secret = au.DarkSkySecret
-            lat = str(au.lat)
-            lon = str(au.lon)
+            lat = str(co.lat)
+            lon = str(co.lon)
 
             request = Request('https://api.darksky.net/forecast/'+secret+'/'+lat+','+lon+'?exclude=[minutely,hourly]')
             try:
@@ -198,7 +198,7 @@ class getBus:
         global busarrival
 
         stop = [
-          ( 'mbta', '47', '1812', 'Central Square' ), #47 stop Brookline/Putnam, towards Central Square
+          co.busstation 
         ]
 
         BusPrediction=predict(stop[0])
@@ -258,7 +258,7 @@ class getTwitter:
         while self._running:
 
             api = twitter.Api(consumer_key=au.consumer_key, consumer_secret=au.consumer_secret, access_token_key=au.access_token_key, access_token_secret=au.access_token_secret)
-            t = api.GetUserTimeline(screen_name='@realDonaldTrump', count=3)
+            t = api.GetUserTimeline(screen_name=co.twitter[0], count=co.twitter[1])
             tweets = [i.AsDict() for i in t]
             sum_tweet=''
 
@@ -283,8 +283,8 @@ class daysUntilStreetSweep:
         while self._running:
 
             the_date=datetime.now()
-            nth_week=1
-            week_day=4 #First Friday of Month
+            nth_week=co.StreetsweepNthWeek_Weekday[0]
+            week_day=co.StreetsweepNthWeek_Weekday[1]  #First Friday of Month
 
             temp = the_date.replace(day=1)
             adj = (week_day - temp.weekday()) % 7
