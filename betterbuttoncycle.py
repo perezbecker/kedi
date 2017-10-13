@@ -11,7 +11,7 @@ import config as co
 
 from predict import predict
 from urllib2 import Request, urlopen, URLError
-from threading import Thread
+from threading import Thread, enumerate
 
 import twitter
 
@@ -205,8 +205,7 @@ class getBus:
 
         while self._running:
 
-
-            time.sleep(60) # Allow a moment for results
+            time.sleep(1) # Allow a moment for results
 
             LetterTime=["A","B","C","D","E","F"]
             currentTime = time.time()
@@ -259,6 +258,7 @@ class getTwitter:
 
             api = twitter.Api(consumer_key=au.consumer_key, consumer_secret=au.consumer_secret, access_token_key=au.access_token_key, access_token_secret=au.access_token_secret)
             t = api.GetUserTimeline(screen_name=co.twitter[0], count=co.twitter[1])
+
             tweets = [i.AsDict() for i in t]
             sum_tweet=''
 
@@ -363,6 +363,12 @@ if __name__ == '__main__':
 
     while Exit==False:
 
+
+        print "* * * Running Threads * * *"
+        for thread in enumerate():
+            print(thread.name)
+
+        print "* * *"
         print "BikeStatus", bikestatus
         print "BusArrival", busarrival
         print "MoveCar", daysTilSweep
@@ -513,7 +519,8 @@ if __name__ == '__main__':
     ButtonTrack.terminate()
     TimeTrack.terminate()
     BikeTrack.terminate()
-    WeatherTrack.terminate()
+    WeatherTrack0.terminate()
+    WeatherTrack1.terminate()
     BusTrack.terminate()
     TwitterTrack.terminate()
     SweepTrack.terminate()
