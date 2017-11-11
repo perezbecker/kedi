@@ -29,7 +29,7 @@ elif(hostname == "kedi2"):
     lon = -71.09
     busstation = ( 'mbta', '47', '1812', 'Central Square' ) #47 stop Brookline/Putnam, towards Central Square
     altTimeZone = "UTC" #UTC only at this point
-    twitter = ["@PattySmyth4real",3]
+    twitter = ["@realDonaldTrump",3]
     bike1Letter, bike1Type, bike1Codes = "B", "Pickup",  ["A32003"] #BU
     bike2Letter, bike2Type, bike2Codes = "T", "Dropoff", ["M32022"] #Trader Joes
     bike3Letter, bike3Type, bike3Codes = "M", "Dropoff", ["M32053"] #Memorial
